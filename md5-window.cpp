@@ -112,15 +112,11 @@ void Md5Window::on_compareButton_clicked() {
 	for(auto it = compareFile.begin(); it != compareFile.end(); it++){
 		vector<string> parts;
 		boost::split(parts, *it, boost::is_any_of(delimiter));
-		if(parts.size() == 1){
-			auto find = md5Map.find(parts[0]);
-			if(find != md5Map.end()){
-				outFile << parts[0] << delimiter << find->second << endl;
-			} else{
-				outFile << parts[0] << endl;
-			}
+		auto find = md5Map.find(parts[0]);
+		if(find != md5Map.end()){
+			outFile << parts[0] << delimiter << find->second << endl;
 		} else{
-			outFile << parts[0] << delimiter << parts[1] << endl;
+			outFile << parts[0] << endl;
 		}
 	}
 

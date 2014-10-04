@@ -6,7 +6,7 @@
 using namespace std;
 using namespace Gtk;
 
-const static string ui_file = "md5calculator.ui";
+static string ui_file = "md5calculator.ui";
 
 class Md5Window {
 	public:
