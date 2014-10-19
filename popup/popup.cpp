@@ -34,9 +34,9 @@ void Popup::ui_signal_connect(Glib::RefPtr<Builder> &builder) {
 	builder->get_widget("menuitem3", item3);
 
 	mainWindow->signal_button_press_event().connect_notify(sigc::mem_fun(*this, &Popup::on_window_press));
-	item1->signal_activate().connect(sigc::mem_fun(*this, &Popup::on_item1_activate));
-	item2->signal_activate().connect(sigc::mem_fun(*this, &Popup::on_item2_activate));
-	item3->signal_activate().connect(sigc::mem_fun(*this, &Popup::on_item3_activate));
+	item1->signal_activate().connect(sigc::bind<Glib::ustring>(sigc::mem_fun(*this, &Popup::on_item_activate), "Item1 activated."));
+	item2->signal_activate().connect(sigc::bind<Glib::ustring>(sigc::mem_fun(*this, &Popup::on_item_activate), "Item2 activated."));
+	item3->signal_activate().connect(sigc::bind<Glib::ustring>(sigc::mem_fun(*this, &Popup::on_item_activate), "Item3 activated."));
 }
 
 /* Signal handler */
@@ -46,14 +46,6 @@ void Popup::on_window_press(GdkEventButton* event) {
 	}
 }
 
-void Popup::on_item1_activate() {
-	MessageDialog(*mainWindow, "Item1 activated.").run();
-}
-
-void Popup::on_item2_activate() {
-	MessageDialog(*mainWindow, "Item2 activated.").run();
-}
-
-void Popup::on_item3_activate() {
-	MessageDialog(*mainWindow, "Item3 activated.").run();
+void Popup::on_item_activate(Glib::ustring msg) {
+	MessageDialog(*mainWindow, msg).run();
 }

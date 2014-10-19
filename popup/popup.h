@@ -17,9 +17,7 @@ class Popup {
 	protected:
 		//Signal handlers
 		void on_window_press(GdkEventButton* event);
-		void on_item1_activate();
-		void on_item2_activate();
-		void on_item3_activate();
+		void on_item_activate(Glib::ustring msg);
 
 		//Widget pointer in the UI file
 		Window* mainWindow = NULL;
