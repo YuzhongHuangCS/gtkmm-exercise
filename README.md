@@ -1,5 +1,5 @@
 gtkmm-exercise
 =============
 
-Some example wirtten with gtkmm and gtk::builder  
+Some examples wirtten with `Gtkmm` and `Gtk::builder`  
 All in object-oriented style
